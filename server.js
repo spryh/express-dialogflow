@@ -22,49 +22,28 @@ app.post("/", function(req, res) {
     } else {
       response = "No";
     }
-  } 
-  
-  else if (req.body.result.action == "Add") {
+  } else if (req.body.result.action == "Add" || "Subtract" || "Mult" || "Div") {
     var num1 = parseFloat(req.body.result.parameters.number1);
     var num2 = parseFloat(req.body.result.parameters.number2);
 
-    var sum = num1 + num2;
-
-    var response = `The sum of ${num1} and ${num2} is ${sum}`;
+    if (req.body.result.action == "Add") {
+      var sum = num1 + num2;
+      var response = `The sum of ${num1} and ${num2} is ${sum}`;
+    } else if (req.body.result.action == "Subtract") {
+      var diff = num1 - num2;
+      var response = `The difference of ${num1} and ${num2} is ${diff}`;
+    } else if (req.body.result.action == "Mult") {
+      var mult = num1 * num2;
+      var response = `The product of ${num1} and ${num2} is ${mult}`;
+    } else if (req.body.result.action == "Div") {
+      var div = num1 / num2;
+      var response = `${num1} divided by ${num2} is ${div}`;
+    }
   }
-
-  else if (req.body.result.action == "Subtract") {
-    var num1 = parseFloat(req.body.result.parameters.number1);
-    var num2 = parseFloat(req.body.result.parameters.number2);
-
-    var diff = num1 - num2;
-
-    var response = `The difference of ${num1} and ${num2} is ${diff}`;
-  }
-
-  else if (req.body.result.action == "Mult") {
-    var num1 = parseFloat(req.body.result.parameters.number1);
-    var num2 = parseFloat(req.body.result.parameters.number2);
-
-    var mult = num1 - num2;
-
-    var response = `The difference of ${num1} and ${num2} is ${mult}`;
-  }
-
-  else if (req.body.result.action == "Div") {
-    var num1 = parseFloat(req.body.result.parameters.number1);
-    var num2 = parseFloat(req.body.result.parameters.number2);
-
-    var div = num1 - num2;
-
-    var response = `The difference of ${num1} and ${num2} is ${div}`;
-  }
-
   res.json({
     speech: response,
     displayText: response
-  })
-
+  });
 });
 
 app.listen(port, ip);
