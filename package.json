@@ -8,7 +8,8 @@
     "express": "^4.16.2",
     "now-logs": "0.0.7",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "themeparks": "^4.6.3"
   },
   "devDependencies": {
     "prettier": "^1.8.2"
